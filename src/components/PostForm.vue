@@ -13,9 +13,7 @@
         style="margin-top: 10px"
         class="btn"
         @click="cretePost"
-    >
-      Создать
-    </my-button>
+    >Создать</my-button>
   </form>
 </template>
 
@@ -32,6 +30,9 @@ export default {
   },
   methods: {
     cretePost() {
+      if (this.post.title.length < 5 || this.post.body.length < 5) {
+        return false;
+      }
       this.post.id = Date.now();
       this.$emit('create', this.post)
       this.post = {
