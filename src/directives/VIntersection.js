@@ -10,7 +10,7 @@ export default {
             }
         };
         let observer = new IntersectionObserver(callback, options);
-        observer.observe(el)
+        observer.observe(el);
     },
     name: 'intersection'
 }

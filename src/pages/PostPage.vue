@@ -44,11 +44,15 @@
 <script>
 import PostForm from "@/components/PostForm";
 import PostList from "@/components/PostList";
+import MySelect from "@/components/UI/MySelect";
+import MyDialog from "@/components/UI/MyDialog";
+import MyButton from "@/components/UI/MyButton";
+import VIntersection from "@/directives/VIntersection";
 import axios from 'axios';
 
 export default {
   components: {
-    PostList, PostForm
+    PostList, PostForm, MySelect, MyDialog, MyButton, VIntersection
   },
   data() {
     return {
@@ -129,11 +133,11 @@ export default {
     // observer.observe(this.$refs.observer)
   },
   computed: {
-    sortPosts() {
+    sortedPosts() {
       return [...this.posts].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]));
     },
     sortedAndSearchedPosts() {
-      return this.sortPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
+      return this.sortedPosts.filter(post => post.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
     }
   },
   watch: {
